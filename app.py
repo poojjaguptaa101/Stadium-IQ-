@@ -425,6 +425,95 @@ h1.page-title{color:rgba(255,255,255,0.18);font-size:11px;letter-spacing:2px;tex
 .api-bar{background:rgba(0,0,0,.4);border-radius:0 0 40px 40px;padding:6px 20px;display:flex;justify-content:space-between;align-items:center;border-top:.5px solid rgba(255,255,255,.04);}
 .api-bar span{font-size:9px;color:rgba(255,255,255,.2);}
 .api-dot{width:5px;height:5px;border-radius:50%;background:#1D9E75;display:inline-block;margin-right:4px;}
+
+/* Desktop Layout & Responsive Styles */
+.desktop-col {
+  display: contents;
+}
+
+/* Premium enhancements for cards */
+.panel, .ev-card, .fc, .alrt, .ai-panel, .metric {
+  background: linear-gradient(135deg, #0d1428, #070e1d) !important;
+  border: 1px solid rgba(55, 138, 221, 0.15) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.fc:hover, .alrt:hover, .panel:hover, .ev-card:hover, .metric:hover {
+  border-color: rgba(55, 138, 221, 0.35) !important;
+  box-shadow: 0 8px 25px rgba(55, 138, 221, 0.18) !important;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding: 40px 24px;
+    background: #040812;
+  }
+  h1.page-title {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 3px;
+  }
+  .phone {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    background: #070b16;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  }
+  .status-bar, .nav, .bnav {
+    display: none !important;
+  }
+  .topbar {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .logo-text {
+    font-size: 18px;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    max-height: none;
+    overflow-y: visible;
+    padding: 24px;
+  }
+  .desktop-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-width: 0;
+  }
+  #col-center {
+    flex: 1.15;
+  }
+  .page {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .api-bar {
+    border-radius: 0 0 16px 16px;
+    padding: 10px 24px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
 </style>
 </head>
 <body>
@@ -456,9 +545,9 @@ h1.page-title{color:rgba(255,255,255,0.18);font-size:11px;letter-spacing:2px;tex
   </div>
 
   <div class="content">
-
-    <!-- ── DASHBOARD ── -->
-    <div class="page shown" id="page-home">
+    <div class="desktop-col" id="col-left">
+      <!-- ── DASHBOARD ── -->
+      <div class="page shown" id="page-home">
       <div class="ev-card">
         <div class="ev-info">
           <h2>Mumbai Indians vs CSK</h2>
@@ -515,10 +604,12 @@ h1.page-title{color:rgba(255,255,255,0.18);font-size:11px;letter-spacing:2px;tex
       </div>
 
       <button class="pbtn" onclick="askAI('Where is the nearest restroom from Section B Row 14?')">Find nearest restroom →</button>
+      </div>
     </div>
 
-    <!-- ── CROWD MAP ── -->
-    <div class="page" id="page-crowd">
+    <div class="desktop-col" id="col-center">
+      <!-- ── CROWD MAP ── -->
+      <div class="page" id="page-crowd">
       <div class="legend">
         <div class="li"><div class="ld" style="background:#1D9E75;"></div>Clear</div>
         <div class="li"><div class="ld" style="background:#BA7517;"></div>Moderate</div>
@@ -567,10 +658,12 @@ h1.page-title{color:rgba(255,255,255,0.18);font-size:11px;letter-spacing:2px;tex
         <div class="gate-row"><div class="sdot sg"></div><div class="glbl">South</div><div class="btrack"><div class="bfill" id="zbar-s" style="width:29%;background:#1D9E75;"></div></div><div class="gwait up" id="zval-s">29%</div></div>
       </div>
       <button class="pbtn" onclick="askAI('Which exit route avoids the North concourse congestion?')">Plan my exit route →</button>
+      </div>
     </div>
 
-    <!-- ── CONCESSIONS ── -->
-    <div class="page" id="page-food">
+    <div class="desktop-col" id="col-right">
+      <!-- ── CONCESSIONS ── -->
+      <div class="page" id="page-food">
       <div class="sec">Concession stands · near you</div>
       <div class="food-grid" id="food-grid">
         <div class="fc"><div class="fn">Biryani House</div><div class="fm">Gate B · Level 1</div><div class="wpill wl">2 min wait</div></div>
@@ -601,6 +694,7 @@ h1.page-title{color:rgba(255,255,255,0.18);font-size:11px;letter-spacing:2px;tex
         <div class="nrow"><div class="nico" style="background:rgba(29,158,117,.14);"><svg width="14" height="14" viewBox="0 0 16 16" fill="#5DCAA5"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.5 5l-4 4-2-2 1-1 1 1 3-3 1 1z"/></svg></div><div class="ntxt"><p>Biryani House order delivered to Row 14</p><span>Concessions · 22 min ago</span></div></div>
       </div>
       <button class="pbtn" onclick="askAI('What are the emergency evacuation procedures for this stadium?')">Emergency info →</button>
+      </div>
     </div>
 
   </div><!-- end content -->
@@ -778,4 +872,4 @@ if __name__ == "__main__":
 ║  Install:  pip install fastapi uvicorn anthropic         ║
 ╚══════════════════════════════════════════════════════════╝
 """)
-    uvicorn.run("stadiumiq_full:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
